@@ -53,13 +53,16 @@ class Request {
 		GET	/node/[id]/view			display a specific node
 		GET	/node/[id]/edit			return an HTML form for editing a node
 		*/
-		// request_array[0] will always be the controller
+		// request_array[0] will always be the controller, or use default
 		if(count($this->request_array)>0){
 			$this->controller = $this->request_array[0];
+		} else {
+			$this->controller = APPLICATION_DEFAULT_CONTROLLER;
 		}
+
 		// request_array[1] will either be the action or the id
 		if(count($this->request_array)>1){
-			if($this->request_array[1]==CREATE){
+			if($this->request_array[1] == CREATE){
 				$this->crud = "CREATE";
 				$this->action = "create";
 			} else {

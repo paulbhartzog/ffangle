@@ -9,6 +9,7 @@
 /* ------------------------------------------------------------------------------------------------- */
 /**
  * Autoloader
+ * @package    FFangle
  * @param      the class to be autoloaded
  * @todo       Optimize: change this into spl_autoload_register() http://php.net/manual/en/function.spl-autoload-register.php
  */

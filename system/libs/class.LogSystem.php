@@ -3,7 +3,7 @@
  * Class LogSystem
  * implements Observer
  * is used for logging observed events
- * @package    Site
+ * @package    FFangle
  * @author     Original Author <PaulBHartzog@PaulBHartzog.org>
  * @copyright  2012 Paul B. Hartzog
  * @license    copyright 2012 Paul B. Hartzog
@@ -32,7 +32,19 @@ class LogSystem implements Observer {
 				echo "Cannot open log file ($this->log_file)";
 				exit;
 			}
-			$requestor_formatted = $_SERVER['SERVER_ADDR'];
+/*
+			if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+				//check ip from share internet{
+				$ip = $_SERVER['HTTP_CLIENT_IP'];
+			} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+				//to check ip is pass from proxy{
+				$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+			} else {
+				$ip = $_SERVER['REMOTE_ADDR'];
+			}
+			$requestor_formatted = $ip;
+			$requestor_formatted = $_SERVER['REMOTE_ADDR'];
+*/
 			$request_method_formatted = $_SERVER['REQUEST_METHOD'];
 			$server_protocol_formatted = $_SERVER['SERVER_PROTOCOL'];
 			$requested_url = $observable->app_request;
@@ -41,7 +53,7 @@ class LogSystem implements Observer {
 			$useragent = "";
 			$status = "200"; // will always be 200 for a web app like this
 
-			$log_entry = $requestor_formatted . " - " . $useragent . " - [" . $now_formatted . "] \"" . $request_formatted . "\" " . $status . "\r\n";
+			$log_entry = "[" . $now_formatted . "] \"" . $request_formatted . "\" " . $status . "\r\n";
 
 			//write
 			if (fwrite($handle, $log_entry) === FALSE) {

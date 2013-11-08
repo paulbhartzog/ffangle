@@ -48,7 +48,6 @@ require_once SYSTEM_CORE_FILE;
 // call Request object to handle the incoming request
 /* ------------------------------------------------------------------------------------------------- */
 
-//echo $_SERVER['REQUEST_URI'];
 $request = new Request();
 //var_dump($request);
 
@@ -56,19 +55,22 @@ $request = new Request();
 // so that urls don't have to match actual controller names
 // if using clean urls, also use matching
 
-?>
-<head>
-<link rel="shortcut icon" href="/2013_code/2013_ffangle/html/images/favicon.png" type="image/x-icon" />
-</head>
-<?php
-// process request into response
-// $response = process($request);
+/* ------------------------------------------------------------------------------------------------- */
+// Application handles request into response
+/* ------------------------------------------------------------------------------------------------- */
+
 $controller_name = ucwords($request->controller . "Controller");
 $controller = new $controller_name;
-$response = $controller->render($request->id);
+
+$response = '<head>
+<link rel="shortcut icon" href="/2013_code/2013_ffangle/html/images/favicon.png" type="image/x-icon" />
+</head>' . "\n\n";
+
+$response .= $controller->render($request);
+
 
 /* ------------------------------------------------------------------------------------------------- */
-// process response (includes output buffer)
+// call Response object to handle the outgoing response (includes output buffer)
 /* ------------------------------------------------------------------------------------------------- */
 
 new Response($response);

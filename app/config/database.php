@@ -35,9 +35,3 @@ define('DB_PASSWORD', 'savage23');
  */
 define('DB_NAME', 'ffangle');
 
-/**
- * @package    FFangle
- * @access     private
- */
-define('DB_PREFIX', '');
-

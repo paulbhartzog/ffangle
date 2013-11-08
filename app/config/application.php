@@ -25,3 +25,8 @@ define('APPLICATION_CONTROLLER_DIR', APP_DIR . DS . 'controllers/');
  */
 define('APPLICATION_MODEL_DIR', APP_DIR . DS . 'models/');
 
+/**
+ * @package    FFangle
+ */
+define('APPLICATION_DEFAULT_CONTROLLER', 'node');
+

@@ -84,11 +84,16 @@ class Response {
 	 * @param   int                $status     The HTTP response status
 	 * @todo    Optimize: extend to other headers and responses
 	*/
-	public function __construct($response_body = '', $status = 200) {
+	public function __construct($response = NULL, $status = 200) {
 		// status will always be 200 within the web application
 		// other statuses are handled by the web server, not this application
 		if($status==200){
-			echo $response_body;
+			// start output buffering
+			ob_start();
+			echo $response;
+			// end output buffering
+			$response = ob_get_clean();
+			echo $response;
 		}
 	}
 }
