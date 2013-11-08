@@ -1,6 +1,6 @@
 <?php
 /**
- * Class NodeModel
+ * Class FileModel
  * is used for responding to data requests from the controller
  * @package    FFangle
  * @author     Original Author <PaulBHartzog@PaulBHartzog.org>
@@ -10,7 +10,7 @@
  * @since      File available since Release 1.0.0
  * @todo       Optimize: verify documentation
  */
-class NodeModel extends Model {
+class FileModel extends Model {
 	
 	/**
 	 * database
@@ -28,7 +28,7 @@ class NodeModel extends Model {
 	 * table
 	 * @package    FFangle
 	 */
-	public $table =  "nodes";
+	public $table =  "files";
 	
 	/**
 	 * constructor
@@ -41,8 +41,8 @@ class NodeModel extends Model {
 	/**
 	 * @package    FFangle
 	 */
-	public function read(){
-		$this->data = $this->db->db_fetch_array("SELECT * FROM $this->table");
+	public function read($url = 'file/0'){
+		$this->data = $this->db->db_fetch_array("SELECT * FROM $this->table WHERE id='1'");
 		//var_dump($this->data);
 		return $this->data;
 	}
@@ -52,6 +52,15 @@ class NodeModel extends Model {
 	 */
 	public function read_by_id($id){
 		$this->data = $this->db->db_fetch_array("SELECT * FROM $this->table WHERE id='$id'");
+		//var_dump($this->data);
+		return $this->data;
+	}
+
+	/**
+	 * @package    FFangle
+	 */
+	public function read_by_name($name){
+		$this->data = $this->db->db_fetch_array("SELECT * FROM $this->table WHERE name='$name'");
 		//var_dump($this->data);
 		return $this->data;
 	}

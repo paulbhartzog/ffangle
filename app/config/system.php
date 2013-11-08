@@ -8,7 +8,7 @@
 /**
  * @package    FFangle
  */
-define('SYSTEM_DIR', ROOT . DS . 'system');
+define('SYSTEM_DIR', SITEROOT . DS . 'system');
 
 /**
  * @package    FFangle

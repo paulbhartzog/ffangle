@@ -76,4 +76,3 @@ class Request {
 		//var_dump($this);
 	}
 }
-?>

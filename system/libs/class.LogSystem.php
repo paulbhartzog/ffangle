@@ -65,4 +65,3 @@ class LogSystem implements Observer {
 	}
 	
 }
-?>

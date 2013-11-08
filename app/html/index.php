@@ -62,17 +62,19 @@ $request = new Request();
 $controller_name = ucwords($request->controller . "Controller");
 $controller = new $controller_name;
 
-$response = '<head>
-<link rel="shortcut icon" href="/2013_code/2013_ffangle/html/images/favicon.png" type="image/x-icon" />
-</head>' . "\n\n";
-
-$response .= $controller->render($request);
-
+$response = $controller->render($request);
+//var_dump($response);
 
 /* ------------------------------------------------------------------------------------------------- */
 // call Response object to handle the outgoing response (includes output buffer)
 /* ------------------------------------------------------------------------------------------------- */
 
-new Response($response);
+if(!empty($response["type"])){
+	$response_type = $response["type"];
+	new Response($response, $response_type);
+} else {
+	new Response($response);
+}
 
+// keep this closing tag as it is the very last one in the entire application
 ?>

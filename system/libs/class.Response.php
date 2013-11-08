@@ -84,17 +84,35 @@ class Response {
 	 * @param   int                $status     The HTTP response status
 	 * @todo    Optimize: extend to other headers and responses
 	*/
-	public function __construct($response = NULL, $status = 200) {
+	public function __construct($response = NULL, $type = "html") {
+		if($type=="html"){
+			$this->HTTP_Response($response);
+		}
+		if($type=="pdf"){
+			$this->PDF_Response($response);
+		}
+	}
+
+	function HTTP_Response($response, $status = 200){
 		// status will always be 200 within the web application
 		// other statuses are handled by the web server, not this application
 		if($status==200){
 			// start output buffering
 			ob_start();
-			echo $response;
+			echo $response[0];
 			// end output buffering
 			$response = ob_get_clean();
 			echo $response;
 		}
 	}
+	
+	function PDF_Response($data){
+		$file_name = $data[0]['name'];
+		$file = APPLICATION_FILE_DIR . DS . $file_name;
+		//var_dump($file);
+		header('Content-type: application/pdf');
+		header('Content-Length: ' . filesize($file));
+		readfile($file);
+	}
+
 }
-?>

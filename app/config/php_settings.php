@@ -3,6 +3,7 @@
  * File level comments for FFangle error_reporting.php
  * @package    FFangle
  * @todo       Optimize: verify documentation
+ * @todo       Optimize: move error log
  */
 
 /* error_reporting values
@@ -30,7 +31,7 @@ if (ENVIRONMENT == "DEVELOPMENT") {
 	error_reporting(E_ALL);
 	ini_set('display_errors','Off');
 	ini_set('log_errors', 'On');
-	ini_set('error_log', ROOT.DS.'tmp'.DS.'logs'.DS.'error.log');
+	ini_set('error_log', SITEROOT . DS . 'tmp' . DS . 'logs' . DS . 'error.log');
 }
 //echo error_reporting();
 

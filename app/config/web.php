@@ -5,6 +5,12 @@
  * @todo       Optimize: verify documentation
  */
 
+/**
+ * @package    FFangle
+ */
+define('APPLICATION_HTML_DIR', APP_DIR . DS . 'html');
+
+
 /* ------------------------------------------------------------------------------------------------- */
 // THEMES
 /* ------------------------------------------------------------------------------------------------- */
@@ -66,4 +72,5 @@ define('DEFAULT_JAVASCRIPT_DIR', '/js');
  * @package    FFangle
  */
 define('DEFAULT_THEME_JS', DEFAULT_JAVASCRIPT_DIR . DS . 'application.js');
+
 

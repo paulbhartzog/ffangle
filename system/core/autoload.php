@@ -49,16 +49,16 @@ function autoloadSystemLibs() {
  * @todo       Optimize: change this into spl_autoload_register() http://php.net/manual/en/function.spl-autoload-register.php
  */
 function autoloadSystemHelpers() {
-	$libs_array = array();
+	$helpers_array = array();
 	if ($handle = opendir(SYSTEM_HELPER_DIR)) {
 		while (false !== ($file = readdir($handle))) {
 			if ($file != "." && $file != "..") {
 				require_once SYSTEM_HELPER_DIR . DS . $file;
-				array_push($libs_array, $file);
+				array_push($helpers_array, $file);
 			}
 		}
 		closedir($handle);
-		//var_dump($libs_array);
+		//var_dump($helpers_array);
 	}
 }
 
@@ -89,16 +89,16 @@ function autoloadApplicationLibs() {
  * @todo       Optimize: change this into spl_autoload_register() http://php.net/manual/en/function.spl-autoload-register.php
  */
 function autoloadApplicationHelpers() {
-	$libs_array = array();
+	$helpers_array = array();
 	if ($handle = opendir(APPLICATION_HELPER_DIR)) {
 		while (false !== ($file = readdir($handle))) {
 			if ($file != "." && $file != "..") {
 				require_once APPLICATION_HELPER_DIR . DS . $file;
-				array_push($libs_array, $file);
+				array_push($helpers_array, $file);
 			}
 		}
 		closedir($handle);
-		//var_dump($libs_array);
+		//var_dump($helpers_array);
 	}
 }
 
@@ -142,11 +142,30 @@ function autoloadApplicationModels(){
 	}
 }
 
+/**
+ * autoload all application views
+ * @package    FFangle
+ * @todo       Optimize: change this into spl_autoload_register() http://php.net/manual/en/function.spl-autoload-register.php
+ */
+function autoloadApplicationViews(){
+	$views_array = array();
+	if ($handle = opendir(APPLICATION_VIEW_DIR)) {
+		while (false !== ($file = readdir($handle))) {
+			if ($file != "." && $file != "..") {
+				require_once APPLICATION_VIEW_DIR . DS . $file;
+				array_push($views_array, $file);
+			}
+		}
+		closedir($handle);
+		//var_dump($views_array);
+	}
+}
+
 autoloadSystemLibs();
 autoloadSystemHelpers();
 autoloadApplicationLibs();
 autoloadApplicationHelpers();
 autoloadApplicationControllers();
 autoloadApplicationModels();
+autoloadApplicationViews();
 
-?>

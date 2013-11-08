@@ -1,8 +1,7 @@
 <?php
 /**
- * Interface Observable
- * is used for making objects Observable
- * i.e. they can have Observers attached to them
+ * Class View
+ * is used for UI logic before using templates
  * @package    FFangle
  * @author     Original Author <PaulBHartzog@PaulBHartzog.org>
  * @copyright  2012 Paul B. Hartzog
@@ -11,8 +10,15 @@
  * @since      File available since Release 1.0.0
  * @todo       Optimize: verify documentation
  */
-interface Observable { 
-	function attach(Observer $observer); 
-	function detach(Observer $observer); 
-	function notify(); 
+abstract class View {
+
+	/**
+	 * constructor
+	 * @abstract
+	 * @package    FFangle
+	 */
+	public function __construct()  
+	{ 
+		//echo __CLASS__;
+	} 
 }

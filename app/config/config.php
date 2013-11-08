@@ -6,9 +6,15 @@
  */
 
 /**
+ * webroot relative to the servername
  * @package    FFangle
  */
-define('ROOT', "/Users/paulbhartzog/Sites/2013_code/2013_ffangle");
+define('WEBROOT', "/2013_code/2013_ffangle");
+
+/**
+ * @package    FFangle
+ */
+define('SITEROOT', "/Users/paulbhartzog/Sites/" . WEBROOT);
 
 
 /* ------------------------------------------------------------------------------------------------- */

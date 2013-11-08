@@ -1,6 +1,6 @@
 <?php
 /**
- * Class NodeController
+ * Class FileController
  * parses requests and tries to respond
  * @package    FFangle
  * @author     Original Author <PaulBHartzog@PaulBHartzog.org>
@@ -10,15 +10,14 @@
  * @since      File available since Release 1.0.0
  * @todo       Optimize: verify documentation and implementation
  */
-class NodeController extends Controller implements Observable {
+class FileController extends Controller implements Observable {
 
 	/**
 	 * @package    FFangle
 	 */
 	function __construct() {
 		parent::__construct();
-        $this->model = new NodeModel();
-        $this->view = new NodeView($this);
+		$this->model = new FileModel();
 	}
 
 	/**
@@ -54,12 +53,12 @@ class NodeController extends Controller implements Observable {
 	 * render function for PageController
 	 * @package    FFangle
 	 * @param    URI
-	 * @todo     Optimize: this should be in a VIEW
+	 * @todo     Optimize: add error page defaults
 	 */
 	function render($request = NULL){
 		//var_dump($request);
 		//var_dump($request->request_array);
-		$data = $this->model->read_by_id($request->request_array[1]);
+		$data = $this->model->read_by_name($request->request_array[1]);
 		//var_dump($data);
 
 		$this->app_request = $request->uri;
@@ -67,25 +66,8 @@ class NodeController extends Controller implements Observable {
 		$this->attach($syslog);
 		$this->notify();
 
-		//var_dump($this->view);
-		$return[0] = $this->view->render($data);
-		return $return;
+		// always include response type in returned array
+		$data['type'] = $data[0]['type'];
+		return $data;
 	}
 }
-
-	/*
-	public function render($request)
-	{
-		
-		$page_response = new PageResponse($this->app_request, $this->language, $this->model);
-		if (!isset($this->data)) $this->data = $page_response->data;
-		$actual_response = $this->app_request;
-
-		if ($page_response->do_404 == TRUE) {
-			$page_response = new PageResponse('/404.html', $this->language, $this->model);
-			$actual_response = "/404.html";
-		}
-		$this->title = $page_response->title;
-		require_once DEFAULT_THEME_DIR . 'views/default.php';
-	}
-*/
