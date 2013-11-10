@@ -58,7 +58,7 @@ class Database {
 	
 	/**
 	 * @package    FFangle
-	 * @params    sql to execute
+	 * @sql    sql to execute
 	 * @todo       log db errors
 	 */
 	// this function is only for testing, DO NOT USE IN PRODUCTION
@@ -78,11 +78,11 @@ class Database {
 
 	/**
 	 * @package    FFangle
-	 * @params    sql to execute
+	 * @sql    sql to execute
 	 * @todo       log db errors
 	 */
 	// this function is only for testing, DO NOT USE IN PRODUCTION
-	function db_fetch_array($sql,$params = NULL){
+	function db_fetch_array($sql){
 		try {
 			$this->statement_handle = $this->database_handle->prepare($sql);
 			$this->statement_handle->execute();

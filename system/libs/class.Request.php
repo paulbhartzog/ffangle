@@ -45,7 +45,10 @@ class Request implements Observable {
 			$uri_without_slashes = rtrim($uri_without_slashes, "/");
 			// load parts into array
 			$this->request_array = explode("/", $uri_without_slashes);
+		} else {
+			$this->getvars['url'] = "";
 		}
+		//debug($this);
 
 		// Request parses the url into parts
 		// Request DOES NOT interpret those parts into a route
@@ -53,15 +56,14 @@ class Request implements Observable {
 		$router = new Router();
 		//debug($router);
 		//debug($this->request_array);
-		$this->route = $router->do_route($this->request_array);
+		$this->route = $router->do_route($this->request_array, $this->getvars['url']);
 		//debug($this->route);
 
 		$this->app_request = $this->uri;
 		$syslog = new LogSystem(LOG_SYSTEM);
 		$this->attach($syslog);
 		$this->notify();
-
-		debug($this);
+		//debug($this);
 	}
 
 	/**
