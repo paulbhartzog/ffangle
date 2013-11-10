@@ -25,6 +25,7 @@ class LogSystem implements Observer {
 	/**
 	 * is used for logging observed events
 	 * @param      Observable $observable describe me
+	 * @todo     Optimize: remove app_request
 	 */
 	function update(Observable $observable) {
 		if (is_writable($this->log_file)) {

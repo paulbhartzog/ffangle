@@ -38,6 +38,21 @@ define('APPLICATION_DEFAULT_CONTROLLER', 'node');
 /**
  * @package    FFangle
  */
+define('APPLICATION_DEFAULT_METHOD', 'view');
+
+/**
+ * @package    FFangle
+ */
+define('APPLICATION_DEFAULT_ID', 1);
+
+/**
+ * @package    FFangle
+ */
+define('APPLICATION_DEFAULT_CRUD', 'READ');
+
+/**
+ * @package    FFangle
+ */
 define('APPLICATION_FILE_DIR', APP_DIR . DS . 'files');
 
 /**

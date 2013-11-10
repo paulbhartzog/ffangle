@@ -30,3 +30,13 @@ define('SYSTEM_LIB_DIR', SYSTEM_DIR . DS . 'libs');
  */
 define('SYSTEM_HELPER_DIR', SYSTEM_DIR . DS . 'helpers');
 
+/**
+ * @package    FFangle
+ */
+define('SYSTEM_PHP_FILE_EXTENSION', '.php');
+
+/**
+ * @package    FFangle
+ */
+define('SYSTEM_CONTROLLER_SUFFIX', 'Controller');
+

@@ -43,7 +43,7 @@ class NodeModel extends Model {
 	 */
 	public function read(){
 		$this->data = $this->db->db_fetch_array("SELECT * FROM $this->table");
-		//var_dump($this->data);
+		//debug($this->data);
 		return $this->data;
 	}
 
@@ -52,7 +52,7 @@ class NodeModel extends Model {
 	 */
 	public function read_by_id($id){
 		$this->data = $this->db->db_fetch_array("SELECT * FROM $this->table WHERE id='$id'");
-		//var_dump($this->data);
+		//debug($this->data);
 		return $this->data;
 	}
 

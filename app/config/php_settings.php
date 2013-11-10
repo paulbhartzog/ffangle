@@ -23,7 +23,7 @@
 6143 	E_ALL
 */
 
-if (ENVIRONMENT == "DEVELOPMENT") {
+if (APPLICATION_ENVIRONMENT == "DEVELOPMENT") {
 	error_reporting(E_ALL | E_NOTICE | E_STRICT);
 	ini_set("display_startup_errors","On");
 	ini_set('display_errors','On');

@@ -109,7 +109,7 @@ class Response {
 	function PDF_Response($data){
 		$file_name = $data[0]['name'];
 		$file = APPLICATION_FILE_DIR . DS . $file_name;
-		//var_dump($file);
+		//debug($file);
 		header('Content-type: application/pdf');
 		header('Content-Length: ' . filesize($file));
 		readfile($file);

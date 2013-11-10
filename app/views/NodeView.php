@@ -52,10 +52,11 @@ class NodeView extends View implements Observable {
 	/**
 	 * @package    FFangle
 	 */
-	function render($data) { 
+	function view($data) {
+		//debug($data);
 		$template_name = $data[0]['data'];
-		//var_dump($template_name);
-		$template = DEFAULT_THEME_DIR . DS . $template_name . ".php";
+		//debug($template_name);
+		$template = DEFAULT_THEME_DIR . DS . $template_name . SYSTEM_PHP_FILE_EXTENSION;
 		ob_start();
 		//$return = file_get_contents($template);
 		require_once($template);

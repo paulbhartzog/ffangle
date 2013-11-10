@@ -14,11 +14,11 @@
  * @todo       Optimize: change this into spl_autoload_register() http://php.net/manual/en/function.spl-autoload-register.php
  */
 function __autoload($class) {
-	$class_file = SYSTEM_LIB_DIR . DS . "class." . $class . '.php';
+	$class_file = SYSTEM_LIB_DIR . DS . "class." . $class . SYSTEM_PHP_FILE_EXTENSION;
     if(file_exists($class_file)) {
 	    require_once $class_file;
     } else {
-		$interface_file = SYSTEM_LIB_DIR . DS . "interface." . $class . '.php';
+		$interface_file = SYSTEM_LIB_DIR . DS . "interface." . $class . SYSTEM_PHP_FILE_EXTENSION;
 	    require_once $interface_file;
 	}
 }
@@ -39,7 +39,7 @@ function autoloadSystemLibs() {
 			}
 		}
 		closedir($handle);
-		//var_dump($libs_array);
+		//debug($libs_array);
 	}
 }
 
@@ -58,7 +58,7 @@ function autoloadSystemHelpers() {
 			}
 		}
 		closedir($handle);
-		//var_dump($helpers_array);
+		//debug($helpers_array);
 	}
 }
 
@@ -78,7 +78,7 @@ function autoloadApplicationLibs() {
 			}
 		}
 		closedir($handle);
-		//var_dump($libs_array);
+		//debug($libs_array);
 	}
 }
 
@@ -98,7 +98,7 @@ function autoloadApplicationHelpers() {
 			}
 		}
 		closedir($handle);
-		//var_dump($helpers_array);
+		//debug($helpers_array);
 	}
 }
 
@@ -108,7 +108,7 @@ function autoloadApplicationHelpers() {
  * @package    FFangle
  * @todo       Optimize: change this into spl_autoload_register() http://php.net/manual/en/function.spl-autoload-register.php
  */
-function autoloadApplicationControllers(){
+function autoloadApplicationControllers($controller_names_array = NULL){
 	$controllers_array = array();
 	if ($handle = opendir(APPLICATION_CONTROLLER_DIR)) {
 		while (false !== ($file = readdir($handle))) {
@@ -118,7 +118,7 @@ function autoloadApplicationControllers(){
 			}
 		}
 		closedir($handle);
-		//var_dump($controllers_array);
+		//debug($controllers_array);
 	}
 }
 
@@ -138,7 +138,7 @@ function autoloadApplicationModels(){
 			}
 		}
 		closedir($handle);
-		//var_dump($models_array);
+		//debug($models_array);
 	}
 }
 
@@ -157,7 +157,7 @@ function autoloadApplicationViews(){
 			}
 		}
 		closedir($handle);
-		//var_dump($views_array);
+		//debug($views_array);
 	}
 }
 

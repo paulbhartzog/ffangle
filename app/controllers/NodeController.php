@@ -10,7 +10,7 @@
  * @since      File available since Release 1.0.0
  * @todo       Optimize: verify documentation and implementation
  */
-class NodeController extends Controller implements Observable {
+class NodeController extends Controller {
 
 	/**
 	 * @package    FFangle
@@ -22,70 +22,26 @@ class NodeController extends Controller implements Observable {
 	}
 
 	/**
-	 * @package    FFangle
-	 */
-	function attach(Observer $observer) { 
-		$this->observers[] = $observer; 
-	} 
-
-	/**
-	 * @package    FFangle
-	 */
-	function detach(Observer $observer) { 
-		$newobservers = array(); 
-		foreach ($this->observers as $obs) { 
-			if (($obs !== $observer)) { 
-				$newobservers[] = $obs; 
-			} 
-		} 
-		$this->observers = $newobservers; 
-	} 
-
-	/**
-	 * @package    FFangle
-	 */
-	function notify() { 
-		foreach ($this->observers as $observer) { 
-			$observer->update($this); 
-		} 
-	}
-	
-	/**
-	 * render function for PageController
+	 * view function for NodeController
 	 * @package    FFangle
 	 * @param    URI
-	 * @todo     Optimize: this should be in a VIEW
 	 */
-	function render($request = NULL){
-		//var_dump($request);
-		//var_dump($request->request_array);
-		$data = $this->model->read_by_id($request->request_array[1]);
-		//var_dump($data);
-
-		$this->app_request = $request->uri;
-		$syslog = new LogSystem(LOG_SYSTEM);
-		$this->attach($syslog);
-		$this->notify();
-
-		//var_dump($this->view);
-		$return[0] = $this->view->render($data);
+	function view($route = NULL){
+		// route has already been turned into controller/method/id
+		//debug($route);
+		$data = $this->model->read_by_id($route->id);
+		//debug($data);
+		//debug($this->view);
+		$return[0] = $this->view->view($data);
 		return $return;
 	}
 }
 
 	/*
-	public function render($request)
+	public function view($request)
 	{
 		
 		$page_response = new PageResponse($this->app_request, $this->language, $this->model);
-		if (!isset($this->data)) $this->data = $page_response->data;
-		$actual_response = $this->app_request;
-
-		if ($page_response->do_404 == TRUE) {
-			$page_response = new PageResponse('/404.html', $this->language, $this->model);
-			$actual_response = "/404.html";
-		}
 		$this->title = $page_response->title;
-		require_once DEFAULT_THEME_DIR . 'views/default.php';
 	}
 */

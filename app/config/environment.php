@@ -9,7 +9,7 @@
  * can be PRODUCTION or DEVELOPMENT
  * @package    FFangle
  */
-define('ENVIRONMENT', 'DEVELOPMENT');
+define('APPLICATION_ENVIRONMENT', 'DEVELOPMENT');
 
 /**
  * version number

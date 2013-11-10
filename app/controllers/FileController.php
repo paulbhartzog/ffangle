@@ -50,16 +50,17 @@ class FileController extends Controller implements Observable {
 	}
 	
 	/**
-	 * render function for PageController
+	 * view function for FileController
 	 * @package    FFangle
 	 * @param    URI
 	 * @todo     Optimize: add error page defaults
+	 * @todo     Optimize: remove app_request
 	 */
-	function render($request = NULL){
-		//var_dump($request);
-		//var_dump($request->request_array);
+	function view($request = NULL){
+		//debug($request);
+		//debug($request->request_array);
 		$data = $this->model->read_by_name($request->request_array[1]);
-		//var_dump($data);
+		//debug($data);
 
 		$this->app_request = $request->uri;
 		$syslog = new LogSystem(LOG_SYSTEM);

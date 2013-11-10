@@ -41,7 +41,7 @@ require_once APP_CONFIG_FILE;
 /* ------------------------------------------------------------------------------------------------- */
 
 require_once SYSTEM_CORE_FILE;
-//var_dump(get_defined_constants());
+//debug(get_defined_constants());
 
 
 /* ------------------------------------------------------------------------------------------------- */
@@ -49,7 +49,7 @@ require_once SYSTEM_CORE_FILE;
 /* ------------------------------------------------------------------------------------------------- */
 
 $request = new Request();
-//var_dump($request);
+//debug($request);
 
 // look for request match in routes db or file
 // so that urls don't have to match actual controller names
@@ -59,11 +59,11 @@ $request = new Request();
 // Application handles request into response
 /* ------------------------------------------------------------------------------------------------- */
 
-$controller_name = ucwords($request->controller . "Controller");
+$controller_name = ucwords($request->route->controller . SYSTEM_CONTROLLER_SUFFIX);
 $controller = new $controller_name;
-
-$response = $controller->render($request);
-//var_dump($response);
+//debug($request->route);
+$response = $controller->view($request->route);
+//debug($response);
 
 /* ------------------------------------------------------------------------------------------------- */
 // call Response object to handle the outgoing response (includes output buffer)

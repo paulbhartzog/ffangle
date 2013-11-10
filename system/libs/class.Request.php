@@ -12,7 +12,7 @@
  * @todo       Optimize: improve QUERY_STRING and GET and POST handling
  * @todo       Optimize: scrub GET and POST vars
  */
-class Request {
+class Request implements Observable {
 	public $uri = NULL;
 	public $domain = NULL;
 	public $this_file = NULL;
@@ -21,11 +21,11 @@ class Request {
 	public $getvars = NULL;
 	public $postvars = NULL;
 	public $request_array =  array();
-	public $controller = "node";
-	public $crud = "READ";
-	public $id = 0;
-	public $action = "view";
 	
+	/**
+	 * @package    FFangle
+	 * @todo     Optimize: remove app_request
+	 */
 	public function __construct(){
 		$this->uri = $_SERVER['REQUEST_URI'];
 		$this->domain = $_SERVER['SERVER_NAME'];
@@ -47,32 +47,51 @@ class Request {
 			$this->request_array = explode("/", $uri_without_slashes);
 		}
 
-		/*
-		GET	/node					display a list of all nodes
-		GET	/node/add				return an HTML form for creating a new node
-		GET	/node/[id]/view			display a specific node
-		GET	/node/[id]/edit			return an HTML form for editing a node
-		*/
-		// request_array[0] will always be the controller, or use default
-		if(count($this->request_array)>0){
-			$this->controller = $this->request_array[0];
-		} else {
-			$this->controller = APPLICATION_DEFAULT_CONTROLLER;
-		}
+		// Request parses the url into parts
+		// Request DOES NOT interpret those parts into a route
+		// Routes does that
+		$router = new Router();
+		//debug($router);
+		//debug($this->request_array);
+		$this->route = $router->do_route($this->request_array);
+		//debug($this->route);
 
-		// request_array[1] will either be the action or the id
-		if(count($this->request_array)>1){
-			if($this->request_array[1] == CREATE){
-				$this->crud = "CREATE";
-				$this->action = "create";
-			} else {
-				$this->id = $this->request_array[1];
-				if(count($this->request_array)>2){
-					$this->action = $this->request_array[2];
-				}
-			}
-		}
+		$this->app_request = $this->uri;
+		$syslog = new LogSystem(LOG_SYSTEM);
+		$this->attach($syslog);
+		$this->notify();
 
-		//var_dump($this);
+		debug($this);
 	}
+
+	/**
+	 * @package    FFangle
+	 */
+	function attach(Observer $observer) { 
+		$this->observers[] = $observer; 
+	} 
+
+	/**
+	 * @package    FFangle
+	 */
+	function detach(Observer $observer) { 
+		$newobservers = array(); 
+		foreach ($this->observers as $obs) { 
+			if (($obs !== $observer)) { 
+				$newobservers[] = $obs; 
+			} 
+		} 
+		$this->observers = $newobservers; 
+	} 
+
+	/**
+	 * @package    FFangle
+	 */
+	function notify() { 
+		foreach ($this->observers as $observer) { 
+			$observer->update($this); 
+		} 
+	}
+	
+
 }
