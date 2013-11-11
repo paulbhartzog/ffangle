@@ -48,6 +48,11 @@ define('APPLICATION_DEFAULT_ID', 1);
 /**
  * @package    FFangle
  */
+define('APPLICATION_DEFAULT_ERROR_ID', 2);
+
+/**
+ * @package    FFangle
+ */
 define('APPLICATION_DEFAULT_CRUD', 'READ');
 
 /**

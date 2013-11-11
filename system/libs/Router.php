@@ -129,25 +129,18 @@ class Router {
 			// otherwise the proper route is to a 404 page
 			$this->do_404();
 		}
-		debug($this);
-		exit;
+		//debug($this);
 	}
 
 	/**
-	 * creates route out of clean url
+	 * creates and returns 404 route
 	 * @package    FFangle
-	 * @todo turn this into a view
 	 */
 	public function do_404(){
-		/*
-		if ($page_response->do_404 == TRUE) {
-			$page_response = new PageResponse('/404.html', $this->language, $this->model);
-			$actual_response = "/404.html";
-		}
-		*/
-		$fake_404 = "404 bad url";
-		echo $fake_404;
-		exit;
+		$this->controller = APPLICATION_DEFAULT_CONTROLLER;
+		$this->method = APPLICATION_DEFAULT_METHOD;
+		$this->id = APPLICATION_DEFAULT_ERROR_ID;
+		//debug($this);
 	}
 
 }
