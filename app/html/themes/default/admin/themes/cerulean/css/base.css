@@ -1,0 +1,157 @@
+/********************************************************
+COMMON CSS ELEMENTS
+
+v 1.1
+********************************************************/
+
+/********************************************************
+GRID
+********************************************************/
+.grid_container, .grid_row, .grid_title_row, .grid_row_tight {
+	float:left;
+	clear:both;
+	width:900px;
+}
+.grid_row, .grid_title_row, .grid_row_tight {padding:5px 0px;border:1px solid #FFFFFF}
+.grid_row_tight { padding:0px; }
+
+.grid_title_row {
+	font-weight:bold;
+	margin-bottom:10px;	
+	letter-spacing:.2em;
+}
+
+/*default input field look and feel */
+.grid_container input {
+	border:1px solid #666666;
+	color:#333333;
+}
+.grid_container textarea {
+	border:1px solid #666666;
+	width:100%;
+}
+
+
+.grid_entry_20,.grid_entry_25,.grid_entry_50,.grid_entry_75,
+.grid_entry_100, .grid_entry_125, .grid_entry_150, .grid_entry_175,
+.grid_entry_200, .grid_entry_225, .grid_entry_250, .grid_entry_275,
+.grid_entry_300, .grid_entry_325, .grid_entry_350, .grid_entry_375,
+.grid_entry_400, .grid_entry_425, .grid_entry_450, .grid_entry_475,
+.grid_entry_500, .grid_entry_525, .grid_entry_550, .grid_entry_575,
+.grid_entry_700 {
+	float:left;
+	padding-right:10px;
+}
+.grid_entry_20_noinput,.grid_entry_25_noinput,.grid_entry_50_noinput,.grid_entry_75_noinput,
+.grid_entry_100_noinput, .grid_entry_125_noinput, .grid_entry_150_noinput, .grid_entry_175_noinput,
+.grid_entry_200_noinput, .grid_entry_225_noinput, .grid_entry_250_noinput, .grid_entry_275_noinput,
+.grid_entry_300_noinput, .grid_entry_325_noinput, .grid_entry_350_noinput, .grid_entry_375_noinput,
+.grid_entry_400_noinput, .grid_entry_425_noinput, .grid_entry_450_noinput, .grid_entry_475_noinput,
+.grid_entry_500_noinput, .grid_entry_525_noinput, .grid_entry_550_noinput, .grid_entry_575_noinput,
+.grid_entry_700_noinput {
+	float:left;
+	padding-right:10px;
+}
+
+.grid_entry_20, .grid_entry_20 input, .grid_entry_20_noinput {width:20px;}
+.grid_entry_25, .grid_entry_25 input, .grid_entry_25_noinput {width:25px;}
+.grid_entry_50, .grid_entry_50 input, .grid_entry_50_noinput {width:50px;}
+.grid_entry_75, .grid_entry_75 input, .grid_entry_75_noinput {width:75px;}
+
+.grid_entry_100, .grid_entry_100 input, .grid_entry_100_noinput {width:100px;}
+.grid_entry_125, .grid_entry_125 input, .grid_entry_125_noinput {width:125px;}
+.grid_entry_150, .grid_entry_150 input, .grid_entry_150_noinput {width:150px;}
+.grid_entry_175, .grid_entry_175 input, .grid_entry_175_noinput {width:175px;}
+
+.grid_entry_200, .grid_entry_200 input, .grid_entry_200_noinput {width:200px;}
+.grid_entry_225, .grid_entry_225 input, .grid_entry_225_noinput {width:225px;}
+.grid_entry_250, .grid_entry_250 input, .grid_entry_250_noinput {width:250px;}
+.grid_entry_275, .grid_entry_275 input, .grid_entry_275_noinput {width:275px;}
+
+.grid_entry_300, .grid_entry_300 input, .grid_entry_300_noinput {width:300px;}
+.grid_entry_325, .grid_entry_325 input, .grid_entry_325_noinput {width:325px;}
+.grid_entry_350, .grid_entry_350 input, .grid_entry_350_noinput {width:350px;}
+.grid_entry_375, .grid_entry_375 input, .grid_entry_375_noinput {width:375px;}
+
+.grid_entry_400, .grid_entry_400 input, .grid_entry_400_noinput {width:400px;}
+.grid_entry_425, .grid_entry_425 input, .grid_entry_425_noinput {width:425px;}
+.grid_entry_450, .grid_entry_450 input, .grid_entry_450_noinput {width:450px;}
+.grid_entry_475, .grid_entry_475 input, .grid_entry_475_noinput {width:475px;}
+
+.grid_entry_500, .grid_entry_500 input, .grid_entry_500_noinput {width:500px;}
+.grid_entry_525, .grid_entry_525 input, .grid_entry_525_noinput {width:525px;}
+.grid_entry_550, .grid_entry_550 input, .grid_entry_550_noinput {width:550px;}
+.grid_entry_575, .grid_entry_575 input, .grid_entry_575_noinput {width:575px;}
+
+.grid_entry_700, .grid_entry_700 input, .grid_entry_700_noinput, .grid_entry_700 textarea {width:700px;}
+.mceEditor {
+	height:500px;
+}
+
+.descriptor {
+	float:left;
+	clear:both;
+	color:#d25e37;
+	padding-bottom:5px;
+}
+
+.importantmessage { color:#d25e37; }
+
+
+/*this is to make a form with an image for a submit button -- change the width and height and background image values */
+.form_submit_invis, .form_submit_invis input  {
+	float:left;	
+	cursor:pointer;
+	border:0px;
+	width:55px;
+	height:21px;
+}
+.form_submit_invis {
+	background-image:url(../images/site/controls/submit_yellow.png);
+	background-repeat:no-repeat;
+}
+.form_submit_invis input {background:none;}
+
+
+
+
+/********************************************************
+GENERAL USAGE TAGS
+********************************************************/
+/*******************************
+IMAGES
+********************************/
+.image_left, .image_right {
+	display:inline;
+}
+.image_left {
+	float:left;
+	padding:0px 12px 6px 0px;
+}
+.image_right { 
+	float:right;
+	padding:0px 0px 6px 12px;
+}
+.image_center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+
+/********************************************************
+ADD-ON TAGS
+********************************************************/
+/*displays*/
+.display_none {display:none; }
+.display_block {display:block; }
+
+/*text*/
+.font_weight_bold {font-weight:bold;}
+
+/*misc*/
+.align_right { text-align:right; }
+.align_center { text-align:center; }
+.grid_row_over {
+	background-color:#FFFFE0;
+	border:dotted 1px #CCCCCC;
+}

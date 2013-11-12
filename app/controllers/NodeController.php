@@ -27,12 +27,19 @@ class NodeController extends Controller {
 	 * @param    URI
 	 */
 	function view($route = NULL){
+		$return = NULL;
 		// route has already been turned into controller/method/id
 		//debug($route);
 		$data = $this->model->read_by_id($route->id);
 		//debug($data);
-		//debug($this->view);
-		$return[0] = $this->view->view($data);
+		if(!empty($data)){
+			//debug($this->view);
+			$return[0] = $this->view->view($data);
+		} else {
+			// error out
+			debug("controller can't find data");
+			error_redirect();
+		}
 		return $return;
 	}
 }

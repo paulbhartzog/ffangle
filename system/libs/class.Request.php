@@ -60,8 +60,8 @@ class Request implements Observable {
 		//debug($this->route);
 
 		$this->app_request = $this->uri;
-		$syslog = new LogSystem(LOG_SYSTEM);
-		$this->attach($syslog);
+		$access_log = new LogAccess(LOG_ACCESS);
+		$this->attach($access_log);
 		$this->notify();
 		//debug($this);
 	}

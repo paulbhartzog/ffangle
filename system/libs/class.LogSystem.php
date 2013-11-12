@@ -1,6 +1,6 @@
 <?php
 /**
- * Class LogSystem
+ * Class LogAccess
  * implements Observer
  * is used for logging observed events
  * @package    FFangle
@@ -11,15 +11,18 @@
  * @since      File available since Release 1.0.0
  * @todo       Optimize: add useragent
  */
-class LogSystem implements Observer {
+class LogAccess implements Observer {
 	private $log_file;
 
 	/**
-	 * initializer for LogSystem
+	 * initializer for LogAccess
 	 * @param      logfile
 	 */
-	function __construct($logfile) {
-		$this->log_file = $logfile;
+	function __construct($log_file) {
+		$this->log_file = $log_file;
+		if(!file_exists($this->log_file)){
+			touch($this->log_file);
+		}
 	}
 
 	/**

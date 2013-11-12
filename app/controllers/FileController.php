@@ -63,8 +63,8 @@ class FileController extends Controller implements Observable {
 		//debug($data);
 
 		$this->app_request = $request->uri;
-		$syslog = new LogSystem(LOG_SYSTEM);
-		$this->attach($syslog);
+		$access_log = new LogAccess(LOG_ACCESS);
+		$this->attach($access_log);
 		$this->notify();
 
 		// always include response type in returned array

@@ -14,7 +14,17 @@ define('WEBROOT', "/2013_code/2013_ffangle");
 /**
  * @package    FFangle
  */
-define('SITEROOT', "/Users/paulbhartzog/Sites/" . WEBROOT);
+define('SITEROOT', "/Users/paulbhartzog/Sites" . WEBROOT);
+
+/**
+ * @package    FFangle
+ */
+define('ADMIN_DIR', "admin");
+
+/**
+ * @package    FFangle
+ */
+define('ADMINROOT', SITEROOT . DS . ADMIN_DIR);
 
 
 /* ------------------------------------------------------------------------------------------------- */
@@ -71,4 +81,11 @@ require_once 'crud.php';
 /* ------------------------------------------------------------------------------------------------- */
 
 require_once 'web.php';
+
+/* ------------------------------------------------------------------------------------------------- */
+// ADMIN
+/* ------------------------------------------------------------------------------------------------- */
+
+require_once 'admin.php';
+
 

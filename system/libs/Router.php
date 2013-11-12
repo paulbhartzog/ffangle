@@ -112,12 +112,9 @@ class Router {
 		// if url is something else then check the clean urls table
 		// not implemented
 		// use clean url model to talk to clean_urls in DB
-		$db = new Database();
-		//debug($db);
-		$column = "url";
-		$sql = "SELECT * from clean_urls WHERE $column = '" . $this->url . "'";
-		//debug($sql);
-		$result = $db->db_exec($sql);
+		$clean_url = new CleanURLModel();
+		$result = $clean_url->read_by_url($this->url);
+		//debug($result);
 		if(!empty($result)){
 			//debug($result);
 			$item_array = $result[0];
@@ -133,7 +130,7 @@ class Router {
 	}
 
 	/**
-	 * creates and returns 404 route
+	 * creates and returns an error route for invalid requests (e.g. mistyped urls)
 	 * @package    FFangle
 	 */
 	public function do_404(){

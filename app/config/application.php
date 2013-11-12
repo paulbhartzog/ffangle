@@ -53,6 +53,11 @@ define('APPLICATION_DEFAULT_ERROR_ID', 2);
 /**
  * @package    FFangle
  */
+define('APPLICATION_DEFAULT_ERROR_KEY', "error");
+
+/**
+ * @package    FFangle
+ */
 define('APPLICATION_DEFAULT_CRUD', 'READ');
 
 /**
@@ -64,4 +69,9 @@ define('APPLICATION_FILE_DIR', APP_DIR . DS . 'files');
  * @package    FFangle
  */
 define('APPLICATION_WEB_DIR', APP_DIR . DS . 'html');
+
+/**
+ * @package    FFangle
+ */
+define('APPLICATION_REDIRECTS_ENABLED', FALSE);
 

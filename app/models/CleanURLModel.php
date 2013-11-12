@@ -1,7 +1,7 @@
 <?php
 /**
  * Class FileModel
- * is used for responding to data requests from the controller
+ * is used for getting routes for clean urls
  * @package    FFangle
  * @author     Original Author <PaulBHartzog@PaulBHartzog.org>
  * @copyright  2012 Paul B. Hartzog
@@ -10,7 +10,7 @@
  * @since      File available since Release 1.0.0
  * @todo       Optimize: verify documentation
  */
-class FileModel extends Model {
+class CleanURLModel extends Model {
 	
 	/**
 	 * database
@@ -28,7 +28,7 @@ class FileModel extends Model {
 	 * table
 	 * @package    FFangle
 	 */
-	public $table =  "files";
+	public $table =  "clean_urls";
 	
 	/**
 	 * constructor
@@ -59,8 +59,8 @@ class FileModel extends Model {
 	/**
 	 * @package    FFangle
 	 */
-	public function read_by_name($name){
-		$this->data = $this->db->db_fetch_array("SELECT * FROM $this->table WHERE name='$name'");
+	public function read_by_url($url){
+		$this->data = $this->db->db_fetch_array("SELECT * FROM $this->table WHERE url='$url'");
 		//debug($this->data);
 		return $this->data;
 	}

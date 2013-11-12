@@ -8,7 +8,6 @@
  * debug
  * this function outputs debug statements ONLY in DEVELOPMENT mode
  * @package    FFangle
- * @param      string to strip slashes from
  */
 function debug($incoming){
 	if(APPLICATION_ENVIRONMENT=="DEVELOPMENT"){

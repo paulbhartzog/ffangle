@@ -59,7 +59,13 @@ class NodeView extends View implements Observable {
 		$template = DEFAULT_THEME_DIR . DS . $template_name . SYSTEM_PHP_FILE_EXTENSION;
 		ob_start();
 		//$return = file_get_contents($template);
-		require_once($template);
+		if(file_exists($template)){
+			require_once($template);
+		} else {
+			// error out
+			debug("view can't find template " . $template);
+			error_redirect();
+		}
 		$return = ob_get_clean();
 		return $return;
 	}

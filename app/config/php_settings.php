@@ -3,24 +3,25 @@
  * File level comments for FFangle error_reporting.php
  * @package    FFangle
  * @todo       Optimize: verify documentation
- * @todo       Optimize: move error log
+ * @todo       Optimize: use error log class
+ * @todo       Optimize: turn php elements into real config file style settings
  */
 
 /* error_reporting values
-1 	 E_ERROR
-2 	E_WARNING
-4 	E_PARSE
-8 	E_NOTICE
-16 	E_CORE_ERROR
-32 	E_CORE_WARNING
-64 	E_COMPILE_ERROR
-128 	E_COMPILE_WARNING
-256 	E_USER_ERROR
-512 	E_USER_WARNING
-1024 	E_USER_NOTICE
-2048 	E_STRICT
-4096 	E_RECOVERABLE_ERROR
-6143 	E_ALL
+1			E_ERROR
+2			E_WARNING
+4			E_PARSE
+8			E_NOTICE
+16			E_CORE_ERROR
+32			E_CORE_WARNING
+64			E_COMPILE_ERROR
+128			E_COMPILE_WARNING
+256			E_USER_ERROR
+512			E_USER_WARNING
+1024		E_USER_NOTICE
+2048		E_STRICT
+4096		E_RECOVERABLE_ERROR
+6143		E_ALL
 */
 
 if (APPLICATION_ENVIRONMENT == "DEVELOPMENT") {
@@ -30,8 +31,8 @@ if (APPLICATION_ENVIRONMENT == "DEVELOPMENT") {
 } else {
 	error_reporting(E_ALL);
 	ini_set('display_errors','Off');
-	ini_set('log_errors', 'On');
-	ini_set('error_log', SITEROOT . DS . 'tmp' . DS . 'logs' . DS . 'error.log');
+	//ini_set('log_errors', 'On');
+	//ini_set('error_log', SITEROOT . DS . 'tmp' . DS . 'logs' . DS . 'error.log');
 }
 //echo error_reporting();
 
